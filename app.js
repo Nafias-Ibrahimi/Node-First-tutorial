@@ -7,9 +7,6 @@ const homeRoute=require('./routes/home-route')
 const app = express();
 require("dotenv").config();
 const startupDebug = require("debug")("startup");
-
-const logger = require("./middlewaers/logger");
-
 const port = process.env.PORT || 3000;
 
 // Middleware
