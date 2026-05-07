@@ -1,4 +1,4 @@
-
+const logger=require('./middlewaers/logger')
 const express = require("express");
 const helmet = require("helmet");
 const morgan = require("morgan");
@@ -8,7 +8,7 @@ const app = express();
 require("dotenv").config();
 const startupDebug = require("debug")("startup");
 
-const logger = require("./logger");
+const logger = require("./middlewaers/logger");
 
 const port = process.env.PORT || 3000;
 
