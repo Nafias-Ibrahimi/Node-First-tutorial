@@ -37,8 +37,15 @@ const deleteCourse=async (id) =>{
     const reuslt=pool.query('delete from courses where Id=?' ,[id])
     return id
 }
+const callStoredProcedure=async(id) =>{
+    const [reuslt]= await pool.query('call sp_select(?) ', [id])
+    return reuslt[0]
+}
 
-const data=updateCourse(52).then((reuslt)=>{
+// const data=updateCourse(52).then((reuslt)=>{
+// console.log(reuslt);
+// })
+const data=callStoredProcedure(40).then((reuslt)=>{
 console.log(reuslt);
 })
 
