@@ -1,4 +1,5 @@
 const mysql = require("mysql2");
+const { updateCourse } = require("../controller/courses-controller");
 
 const pool = mysql
   .createPool({
@@ -15,10 +16,29 @@ const getCourses = async () => {
 };
 const getCourse = async (id) => {
   const [reuslt] = await pool.query(`select * from courses where id=? `,[id]);
- return reuslt
+ return reuslt[0]
+ 
 };
+const insertCourse=async(title)=>{
+    const reuslt= await pool.query('insert into courses (Title) value (?)',
+    [title])
 
-const data=getCourse(1).then((reuslt)=>{
+    return getCourse(reuslt.insertId)
+}
+
+const updateCourse=async (id ,title)=>{
+    const [reuslt]= await pool.query(`
+        update courese set title = ?` , [title ,id])
+        return getCourse(id)
+
+}  
+
+const deleteCourse=async (id) =>{
+    const reuslt=pool.query('delete from courses where Id=?' ,[id])
+    return id
+}
+
+const data=updateCourse(52).then((reuslt)=>{
 console.log(reuslt);
 })
 

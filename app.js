@@ -4,6 +4,7 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 const coursesRoute = require("./routes/courses-route");
 const homeRoute=require('./routes/home-route')
+
 const app = express();
 require("dotenv").config();
 const startupDebug = require("debug")("startup");
@@ -30,3 +31,4 @@ app.use('/' ,homeRoute)
 app.listen(port, () => {
   console.log(`listening to port ${port}`);
 });
+
