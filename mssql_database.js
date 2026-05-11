@@ -31,5 +31,30 @@ const getCourse=async (id) =>{
 console.log(result);
 return recordset
 }
+const insertCourse=async (id,title) =>{
+    const pool=await poolPromise
+        const request=pool.request();
+        request.input('id' ,sql.Int , id)
+        request.input('Title' ,sql.NVarChar , title)
+      const result=await  request.query('insert into courses (title) values (@Title)')
+console.log(result);
+// return recordset
+}
+const updateCourse=async (title) =>{
+    const pool=await poolPromise
+        const request=pool.request();
+        request.input('Tilte' ,sql.NVarChar , title)
+      const result=await  request.query('update courses set Title=@Title where Id=@Id')
+console.log(result);
+// return recordset
+}
+const deleteCourse=async (id) =>{
+    const pool=await poolPromise
+        const request=pool.request();
+        request.input('selectedId' ,sql.Int , Id)
+      const result=await  request.query('delete from coursese where Id=@selectedId')
+console.log(result);
+// return recordset
+}
 
-    getCourses(2)
+ deleteCourse(2)
