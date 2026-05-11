@@ -15,11 +15,9 @@ const getCourse = (req, res) => {
     });
 };
 
-
 const getCourses=(req,res )=>{
   res.send(['html' ,'css','javascript'])
 }
-
 
 const insertCourse=(req, res) => {
   if (!req.body.name || req.body.name.length < 3) {
