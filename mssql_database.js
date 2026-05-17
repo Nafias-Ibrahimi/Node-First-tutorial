@@ -57,4 +57,14 @@ console.log(result);
 // return recordset
 }
 
- deleteCourse(2)
+//  deleteCourse(2)
+
+const callStoredProcedure=async(id)=>{
+    const pool=await poolPromise;
+    const request=pool.request()
+    request.input('Id' , sql.Int , id)
+    const result=await request.execute('sp_select')
+    console.log(result);
+}
+
+callStoredProcedure(10)
